@@ -15,7 +15,7 @@ class TripsController < ProtectedController
 
   # POST /trips
   def create
-    @trip = current_user.trip.build(trip_params)
+    @trip = current_user.trips.build(trip_params)
 
     if @trip.save
       render json: @trip, status: :created, location: @trip
@@ -41,7 +41,7 @@ class TripsController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trip
-      @trip = current_user.trip.find(params[:id])
+      @trip = current_user.trips.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
