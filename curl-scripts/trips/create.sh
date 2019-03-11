@@ -8,7 +8,10 @@ curl "http://localhost:4741/trips" \
   --data '{
     "trip": {
       "name": "'"${NAME}"'",
-      "location": "'"${LOCATION}"'"
+      "origin": "'"${ORIGIN}"'",
+      "destination": "'"${DESTINATION}"'",
+      "distance": "'"${DISTANCE}"'",
+      "todo": "'"${TODO}"'"
     }
   }'
 

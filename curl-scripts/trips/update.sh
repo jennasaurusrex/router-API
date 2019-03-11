@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl "http://localhost:4741/trips" \
+curl "http://localhost:4741/trips/${ID}" \
   --include \
   --request PATCH \
   --header "Content-Type: application/json" \
@@ -8,7 +8,10 @@ curl "http://localhost:4741/trips" \
   --data '{
     "trip": {
       "name": "'"${NAME}"'",
-      "location": "'"${LOCATION}"'"
+      "origin": "'"${ORIGIN}"'",
+      "destination": "'"${DESTINATION}"'",
+      "distance": "'"${DISTANCE}"'",
+      "todo": "'"${TODO}"'"
     }
   }'
 
