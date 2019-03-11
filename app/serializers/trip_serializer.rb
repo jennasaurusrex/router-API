@@ -1,5 +1,5 @@
 class TripSerializer < ActiveModel::Serializer
-  attributes :id, :name, :location, :user_id, :editable
+  attributes :id, :name, :origin, :destination, :todo, :distance, :user_id, :editable
 
   def editable
     scope == object.user

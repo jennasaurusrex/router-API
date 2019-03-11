@@ -3,7 +3,7 @@ class TripsController < ProtectedController
 
   # GET /trips
   def index
-    @trips = Trip.all
+    @trips = current_user.trips.all
 
     render json: @trips
   end
@@ -18,7 +18,7 @@ class TripsController < ProtectedController
     @trip = current_user.trips.build(trip_params)
 
     if @trip.save
-      render json: @trip, status: :created, location: @trip
+      render json: @trip, status: :created
     else
       render json: @trip.errors, status: :unprocessable_entity
     end
@@ -46,6 +46,6 @@ class TripsController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def trip_params
-      params.require(:trip).permit(:name, :location)
+      params.require(:trip).permit(:name, :origin, :destination, :distance, :todo)
     end
 end
