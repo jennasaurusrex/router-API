@@ -1,22 +1,23 @@
 class TodosController < ProtectedController
-  before_action :set_trip
+  # before_action :set_trip
   before_action :set_todo, only: [:show, :update, :destroy]
 
-  # GET /todos
-  def index
-    @todos = @trip.todos.all
-
-    render json: @todos
-  end
-
-  # GET /todos/1
-  def show
-    render json: @todo
-  end
+  # # GET /todos
+  # def index
+  #   @todos = Todos.all
+  #
+  #   render json: @todos
+  # end
+  #
+  # # GET /todos/1
+  # def show
+  #   render json: @todo
+  # end
 
   # POST /todos
   def create
-    @todo = @trip.todos.build(todo_params)
+    puts 'HIDHJKDHGKJLDFG'
+    @todo = Todo.new(todo_params)
 
     if @todo.save
       render json: @todo, status: :created
@@ -25,14 +26,14 @@ class TodosController < ProtectedController
     end
   end
 
-  # PATCH/PUT /todos/1
-  def update
-    if @todo.update(todo_params)
-      render json: @todo
-    else
-      render json: @todo.errors, status: :unprocessable_entity
-    end
-  end
+  # PATCH/PUT /todos/1 NOPE
+  # def update
+  #   if @todo.update(todo_params)
+  #     render json: @todo
+  #   else
+  #     render json: @todo.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /todos/1
   def destroy
@@ -42,7 +43,7 @@ class TodosController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
-      @todo = @trip.todos.find(params[:id])
+      @todo = current_user.todos.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
@@ -50,7 +51,7 @@ class TodosController < ProtectedController
       params.require(:todo).permit(:title, :description, :trip_id)
     end
 
-    def set_trip
-      @trip = current_user.trips.find(params[:trip_id])
-    end
+    # def set_trip
+    #   @trip = current_user.trips.find(params[:trip_id])
+    # end
 end
