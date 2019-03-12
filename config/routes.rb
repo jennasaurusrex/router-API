@@ -2,6 +2,8 @@
 
 Rails.application.routes.draw do
   resources :trips, except: %i[new edit]
+  resources :todos, except: %i[new edit update]
+
   # RESTful routes
   resources :examples, except: %i[new edit]
 
