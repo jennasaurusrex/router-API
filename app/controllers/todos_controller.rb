@@ -8,11 +8,11 @@ class TodosController < ProtectedController
   #
   #   render json: @todos
   # end
-  #
-  # # GET /todos/1
-  # def show
-  #   render json: @todo
-  # end
+
+  # GET /todos/1
+  def show
+    render json: @todo
+  end
 
   # POST /todos
   def create
