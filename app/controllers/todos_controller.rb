@@ -1,9 +1,10 @@
 class TodosController < ProtectedController
+  before_action :set_trip
   before_action :set_todo, only: [:show, :update, :destroy]
 
   # GET /todos
   def index
-    @todos = current_user.todos.all
+    @todos = @trip.todos.all
 
     render json: @todos
   end
@@ -15,10 +16,10 @@ class TodosController < ProtectedController
 
   # POST /todos
   def create
-    @todo = current_user.todos.build(todo_params)
+    @todo = @trip.todos.build(todo_params)
 
     if @todo.save
-      render json: @todo, status: :created, location: @todo
+      render json: @todo, status: :created
     else
       render json: @todo.errors, status: :unprocessable_entity
     end
@@ -41,11 +42,15 @@ class TodosController < ProtectedController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo
-      @todo = current_user.todos.find(params[:id])
+      @todo = @trip.todos.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def todo_params
-      params.require(:todo).permit(:title, :description)
+      params.require(:todo).permit(:title, :description, :trip_id)
+    end
+
+    def set_trip
+      @trip = current_user.trips.find(params[:trip_id])
     end
 end

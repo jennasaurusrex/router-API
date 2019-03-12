@@ -10,8 +10,7 @@ curl "http://localhost:4741/trips" \
       "name": "'"${NAME}"'",
       "origin": "'"${ORIGIN}"'",
       "destination": "'"${DESTINATION}"'",
-      "distance": "'"${DISTANCE}"'",
-      "todo": "'"${TODO}"'"
+      "expense": "'"${EXPENSE}"'"
     }
   }'
 
