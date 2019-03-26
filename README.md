@@ -29,10 +29,11 @@ router.jn is an app created out of necessity. The idea for this app stemmed from
 - Ruby
 
 ## Unsolved Problems
-- Incorporate working google maps API into front end
-- Incorporate AWS to upload photos taken
-- Fix tables in rails to CRUD on expenses, add a photo table.
-- Add sharing with social media
+- Incorporate working google maps API into front end [COMPLETE]
+- Incorporate AWS to upload photos taken [WIP]
+- Fix tables in rails to CRUD on expenses. [COMPLETE]
+- Add a photo table. 
+- Add sharing with social media.
 
 ## ERD, Wireframes, and User Stories
 [Link to gallery](https://imgur.com/a/Ht3TE7x)
@@ -50,3 +51,5 @@ router.jn is an app created out of necessity. The idea for this app stemmed from
 | PATCH  | `/trips/:id`           | `trips#update`    |
 | POST   | `/trips/:id/todo/:id`               | `todo#create`    |
 | DELETE   | `/trips/:id/todo/:id`  | `todo#destroy`   |
+| POST   | `/trips/:id/expense/:id`               | `expense#create`    |
+| DELETE   | `/trips/:id/expense/:id`  | `expense#destroy`   |
