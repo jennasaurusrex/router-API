@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :expenses, except: %i[new edit]
   resources :trips, except: %i[new edit]
   resources :todos, except: %i[new edit update]
 

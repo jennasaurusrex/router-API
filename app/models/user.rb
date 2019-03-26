@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :examples
   has_many :trips
   has_many :todos, through: :trips
+  has_many :expenses, through: :trips
 end

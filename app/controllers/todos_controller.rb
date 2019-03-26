@@ -16,7 +16,6 @@ class TodosController < ProtectedController
 
   # POST /todos
   def create
-    puts 'HIDHJKDHGKJLDFG'
     @todo = Todo.new(todo_params)
 
     if @todo.save
